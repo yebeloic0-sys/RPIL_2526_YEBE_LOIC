@@ -176,8 +176,4 @@ de données (réponse 503 au lieu d'un plantage), et le matching lui-même est
 entouré d'un filet de sécurité au cas où des données corrompues arriveraient
 jusque-là.
 
-## Soumission
 
-- Renommez ce dépôt en `RPIL_2526_nom_prenom` avant de le pousser sur GitHub.
-- Dépôt à soumettre avant le **samedi 4 juillet 2026, 15h**.
-- Présentation en ligne prévue le **lundi 6 juillet 2026 à partir de 16h**.
