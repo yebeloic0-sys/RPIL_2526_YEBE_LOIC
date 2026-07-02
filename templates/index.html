@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFRI · MentorLink — Recherche de mentor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="page">
+
+  <header class="hero">
+    <p class="eyebrow">IFRI · UAC — Rattrapage Projet Intégrateur 2025–2026</p>
+    <h1>MentorLink</h1>
+    <p class="tagline">Trouvez, en quelques secondes, le mentor dont les compétences et l'emploi du temps correspondent aux vôtres.</p>
+  </header>
+
+  <main class="layout">
+
+    <section class="panel form-panel" aria-label="Formulaire de recherche">
+      <h2>Votre recherche</h2>
+      <form id="search-form" novalidate>
+
+        <div class="field">
+          <label for="matieres">Matières / compétences recherchées</label>
+          <input type="text" id="matieres" name="matieres" placeholder="ex : Python, Bases de données" autocomplete="off" required>
+          <p class="hint">Séparez plusieurs matières par une virgule.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="jour">Jour souhaité</label>
+            <select id="jour" name="jour" required>
+              <option value="" disabled selected>Choisir…</option>
+              <option>Lundi</option>
+              <option>Mardi</option>
+              <option>Mercredi</option>
+              <option>Jeudi</option>
+              <option>Vendredi</option>
+              <option>Samedi</option>
+              <option>Dimanche</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="heure">Heure souhaitée</label>
+            <input type="time" id="heure" name="heure" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="filiere">Filière <span class="optional">(optionnel)</span></label>
+          <select id="filiere" name="filiere">
+            <option value="">Toutes les filières</option>
+            <option value="IA">IA</option>
+            <option value="IM">IM</option>
+            <option value="GL">GL</option>
+            <option value="SE&IoT">SE&amp;IoT</option>
+            <option value="SI">SI</option>
+          </select>
+        </div>
+
+        <p class="hint tolerance-note">Tolérance horaire appliquée automatiquement : ± 1 heure autour du créneau des mentors.</p>
+
+        <button type="submit" class="btn-search">
+          <span>Rechercher</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="panel results-panel" aria-label="Résultats de la recherche">
+      <div class="results-header">
+        <h2>Mentors compatibles</h2>
+        <span id="results-count" class="count-badge" hidden></span>
+      </div>
+
+      <div id="results-empty" class="empty-state">
+        <p>Lancez une recherche pour voir apparaître vos mentors compatibles ici.</p>
+      </div>
+
+      <div id="results-error" class="error-state" hidden></div>
+
+      <div id="results-none" class="empty-state" hidden>
+        <p>Aucun mentor compatible pour cette recherche. Essayez une autre matière ou un autre créneau horaire.</p>
+      </div>
+
+      <ul id="results-list" class="results-list" hidden></ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>IFRI_MentorLink — Projet intégrateur 2025–2026 · Recherche de mentor sans authentification</p>
+  </footer>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
