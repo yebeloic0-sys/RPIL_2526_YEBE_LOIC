@@ -1,18 +1,24 @@
 :root {
-  --paper: #F7F6F2;
-  --card: #FFFFFF;
-  --ink: #101B33;
-  --ink-soft: #4A5568;
-  --ink-faint: #8891A3;
-  --gold: #C99A3A;
-  --gold-soft: #EFDDB0;
-  --mint: #2F9E6E;
-  --line: #DEDBD1;
-  --radius: 14px;
+  /* Palette Tech & Académique (Style IFRI / UAC) */
+  --bg-main: #F3F4F6;      /* Gris très clair, classique pour les interfaces d'administration */
+  --card: #FFFFFF;         /* Blanc pur pour les cartes */
+  --text-main: #0F172A;    /* Noir ardoise profond, plus pro que le noir pur */
+  --text-soft: #475569;    /* Gris foncé pour le texte secondaire */
+  --text-faint: #94A3B8;   /* Gris clair pour les indications */
+  
+  --primary: #1D4ED8;      /* Bleu institutionnel et tech */
+  --primary-hover: #1E40AF;
+  --primary-soft: #DBEAFE;
+  
+  --match-green: #059669;  /* Vert "succès" standard et lisible */
+  --match-green-soft: #D1FAE5;
+  
+  --border: #CBD5E1;       /* Gris moyen pour séparer les éléments proprement */
+  --radius: 8px;           /* Arrondis plus discrets, style "dashboard" */
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+  /* Typographie moderne et orientée développement */
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Consolas", "Monaco", "Courier New", monospace; /* Vrai look code */
 }
 
 * { box-sizing: border-box; }
@@ -21,11 +27,11 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--paper);
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(16,27,51,0.06) 1px, transparent 0);
-  background-size: 28px 28px;
-  color: var(--ink);
+  background: var(--bg-main);
+  /* Un motif de fond très léger, type grille de pixels pour le côté IT */
+  background-image: radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+  color: var(--text-main);
   font-family: var(--font-body);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -35,7 +41,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -50,41 +56,43 @@ select:focus-visible {
 .hero {
   text-align: center;
   padding: 24px 0 44px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--border);
   margin-bottom: 40px;
 }
 
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--primary);
+  font-weight: 600;
   margin: 0 0 14px;
 }
 
 .hero h1 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2.6rem, 5vw, 3.6rem);
-  letter-spacing: -0.01em;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  letter-spacing: -0.02em;
   margin: 0 0 14px;
-  color: var(--ink);
+  color: var(--text-main);
 }
 
 .hero h1::after {
   content: "";
   display: block;
-  width: 46px;
-  height: 3px;
-  background: var(--gold);
+  width: 60px;
+  height: 4px;
+  background: var(--primary);
   margin: 18px auto 0;
+  border-radius: 2px;
 }
 
 .tagline {
   font-size: 1.05rem;
-  color: var(--ink-soft);
-  max-width: 480px;
+  color: var(--text-soft);
+  max-width: 500px;
   margin: 18px auto 0;
 }
 
@@ -103,16 +111,17 @@ select:focus-visible {
 
 .panel {
   background: var(--card);
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Ombre légère très pro */
 }
 
 .panel h2 {
-  font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   margin: 0 0 22px;
+  color: var(--text-main);
 }
 
 /* ---------- Form ---------- */
@@ -127,15 +136,15 @@ select:focus-visible {
 
 label {
   display: block;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--text-main);
   margin-bottom: 6px;
 }
 
 .optional {
   font-weight: 400;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   text-transform: none;
   letter-spacing: 0;
 }
@@ -144,41 +153,42 @@ input[type="text"],
 input[type="time"],
 select {
   width: 100%;
-  padding: 11px 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
   font-family: var(--font-body);
   font-size: 0.95rem;
-  color: var(--ink);
-  background: var(--paper);
-  transition: border-color 0.15s ease;
+  color: var(--text-main);
+  background: var(--card);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 input[type="text"]:hover,
 input[type="time"]:hover,
-select:hover { border-color: var(--ink-faint); }
+select:hover { border-color: var(--text-faint); }
 
 input[type="text"]:focus,
 input[type="time"]:focus,
 select:focus {
-  border-color: var(--gold);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
   outline: none;
 }
 
 .hint {
   font-size: 0.78rem;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   margin: 6px 0 0;
 }
 
 .tolerance-note {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   padding: 10px 12px;
-  background: var(--paper);
-  border: 1px dashed var(--line);
-  border-radius: 8px;
-  margin: 4px 0 22px;
+  background: var(--bg-main);
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  margin: 16px 0 22px;
+  color: var(--text-soft);
 }
 
 .btn-search {
@@ -187,23 +197,23 @@ select:focus {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 13px 20px;
-  background: var(--ink);
-  color: var(--paper);
+  padding: 12px 20px;
+  background: var(--primary);
+  color: var(--card);
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.1s ease;
+  transition: background 0.15s ease;
 }
 
-.btn-search:hover { background: #1C2D52; }
-.btn-search:active { transform: translateY(1px); }
+.btn-search:hover { background: var(--primary-hover); }
+.btn-search:active { transform: scale(0.98); }
 
 .btn-arrow { transition: transform 0.15s ease; }
-.btn-search:hover .btn-arrow { transform: translateX(3px); }
+.btn-search:hover .btn-arrow { transform: translateX(4px); }
 
 /* ---------- Results ---------- */
 
@@ -218,25 +228,28 @@ select:focus {
 
 .count-badge {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--ink-soft);
-  background: var(--paper);
-  border: 1px solid var(--line);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--primary-soft);
   border-radius: 999px;
-  padding: 3px 12px;
+  padding: 4px 12px;
 }
 
 .empty-state, .error-state {
   padding: 40px 20px;
   text-align: center;
-  color: var(--ink-faint);
+  color: var(--text-soft);
   font-size: 0.95rem;
+  background: var(--bg-main);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
 }
 
 .error-state {
-  color: #B4432E;
-  background: #FBEEEA;
-  border: 1px solid #F0CFC5;
+  color: #991B1B;
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
   border-radius: 8px;
   padding: 16px;
   text-align: left;
@@ -254,16 +267,16 @@ select:focus {
 }
 
 .mentor-card {
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   padding: 20px 22px;
-  background: var(--paper);
-  animation: rise 0.3s ease both;
+  background: var(--card);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  transition: border-color 0.2s ease;
 }
 
-@keyframes rise {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+.mentor-card:hover {
+  border-color: var(--primary-soft);
 }
 
 .card-top {
@@ -274,15 +287,14 @@ select:focus {
 }
 
 .card-top h3 {
-  font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.15rem;
   margin: 0 0 4px;
 }
 
 .card-meta {
-  font-size: 0.82rem;
-  color: var(--ink-soft);
+  font-size: 0.85rem;
+  color: var(--text-soft);
   margin: 0;
 }
 
@@ -290,46 +302,43 @@ select:focus {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 2px 8px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
+  background: var(--bg-main);
+  color: var(--text-soft);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
 }
 
 .score-chip {
   font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 1.05rem;
-  color: var(--ink);
-  background: var(--gold-soft);
-  border: 1px solid var(--gold);
-  border-radius: 8px;
-  padding: 4px 12px;
-  white-space: nowrap;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-radius: 6px;
+  padding: 4px 10px;
 }
 
-/* signature element: the "link" bar between mentee and mentor */
+/* Barre de progression du match */
 .link-bar {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 16px 0;
+  margin: 18px 0;
 }
 
 .node {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ink-soft);
-  white-space: nowrap;
+  color: var(--text-faint);
 }
 
 .bar-track {
   flex: 1;
-  height: 6px;
-  background: var(--line);
-  border-radius: 999px;
+  height: 4px;
+  background: var(--bg-main);
+  border-radius: 2px;
   overflow: hidden;
   position: relative;
 }
@@ -337,68 +346,71 @@ select:focus {
 .bar-fill {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, var(--mint), var(--gold));
-  border-radius: 999px;
-  transition: width 0.5s ease;
+  background: var(--match-green);
+  border-radius: 2px;
+  transition: width 0.5s ease-out;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
   margin-bottom: 14px;
 }
 
 .tag {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  padding: 3px 10px;
-  border-radius: 999px;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background: var(--bg-main);
+  color: var(--text-soft);
+  border: 1px solid var(--border);
+  border-radius: 4px;
 }
 
 .tag-match {
-  background: rgba(47,158,110,0.12);
-  color: var(--mint);
-  border: 1px solid rgba(47,158,110,0.35);
+  background: var(--match-green-soft);
+  color: var(--match-green);
+  border-color: var(--match-green);
+  font-weight: 600;
 }
 
 .card-details p {
-  font-size: 0.86rem;
-  margin: 4px 0;
-  color: var(--ink-soft);
+  font-size: 0.88rem;
+  margin: 6px 0;
+  color: var(--text-main);
 }
 
 .detail-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--ink-faint);
+  font-weight: 600;
+  color: var(--text-faint);
   margin-right: 8px;
 }
 
 .score-breakdown {
   display: flex;
-  gap: 14px;
-  margin-top: 12px;
+  gap: 16px;
+  margin-top: 16px;
   padding-top: 12px;
-  border-top: 1px dashed var(--line);
+  border-top: 1px solid var(--bg-main);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--ink-faint);
+  font-size: 0.75rem;
+  color: var(--text-soft);
 }
 
-.filiere-match { color: var(--mint); }
+.filiere-match { color: var(--primary); font-weight: bold; }
 
 /* ---------- Footer ---------- */
 
 .site-footer {
   text-align: center;
   margin-top: 48px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-  font-size: 0.78rem;
-  color: var(--ink-faint);
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text-faint);
 }
 
 @media (prefers-reduced-motion: reduce) {
