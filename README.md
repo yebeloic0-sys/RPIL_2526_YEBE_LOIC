@@ -62,17 +62,10 @@ createdb mentorlink
 # CREATE DATABASE mentorlink;
 ```
 
-**Option B — sans rien installer, via Docker :**
-```bash
-docker compose up -d
-```
-Cela démarre un PostgreSQL local sur le port 5432 avec les identifiants déjà
-attendus par `.env.example` (base `mentorlink` créée automatiquement).
-
 ### 4. Configurer la connexion
 
 ```bash
-cp .env.example .env
+cp .env
 # Éditez .env et renseignez vos identifiants PostgreSQL si besoin
 ```
 
